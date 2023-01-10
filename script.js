@@ -20,11 +20,11 @@ function showTime() {
   }
 
   let time = hours + ":" + minutes + ":" + seconds + " " + session;
-
+  
   document.querySelector(".clock"),innerText = time;
   document.querySelector(".clock").textContent = time;
-  document.querySelector(".day").innerHTML = months[date.getMonth()] + " " + dayOfMonth + ", " + date.getFullYear()
   document.querySelector(".dayOfWeek").innerHTML = dayOfWeek;
+  document.querySelector(".day").innerHTML = " " + months[date.getMonth(" ")] + " " + dayOfMonth + ", " + date.getFullYear()
 
   setTimeout(showTime, 1000);
 }

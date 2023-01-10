@@ -1,23 +1,31 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import { setupCounter } from './counter.js'
+function showTime() {
+  let date = new Date();
+  let weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let seconds = date.getSeconds();
+  let session = "AM";
 
-setupCounter(document.querySelector('#counter'))
+  let dayOfWeek = weekday[date.getDay()];
+  let dayOfMonth = date.getDate();
+
+  if (hours == 0) {
+    hours = 12;
+  }
+  if (hours > 12) {
+    hours = hours - 12;
+    session = "PM";
+  }
+
+  let time = hours + ":" + minutes + ":" + seconds + " " + session;
+
+  document.querySelector(".clock"),innerText = time;
+  document.querySelector(".clock").textContent = time;
+  document.querySelector(".day").innerHTML = months[date.getMonth()] + " " + dayOfMonth + ", " + date.getFullYear()
+  document.querySelector(".dayOfWeek").innerHTML = dayOfWeek;
+
+  setTimeout(showTime, 1000);
+}
+showTime();
